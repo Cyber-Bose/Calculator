@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Calculator</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7fa; /* Light background color */
+        }
+        
+        .calculator-container {
+            max-width: 400px; /* Fixed width for the calculator */
+            margin: 50px auto; /* Centering the calculator */
+            padding: 20px; /* Padding inside the container */
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            background: #ffffff; /* White background */
+            border: 1px solid #eaeaea; /* Light border */
+        }
+
+        .calculator-header {
+            text-align: center; /* Center the header text */
+            margin-bottom: 20px; /* Spacing below header */
+        }
+
+        .form-label {
+            font-weight: 500; /* Bold labels */
+            color: #333; /* Dark text for labels */
+        }
+
+        .form-control, .form-select {
+            border: 1px solid #ced4da; /* Default border color */
+            border-radius: 8px; /* Rounded corners for inputs */
+            transition: border-color 0.3s; /* Transition for focus effect */
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #0056b3; /* Blue border on focus */
+            box-shadow: 0 0 5px rgba(0, 86, 179, 0.5); /* Shadow on focus */
+        }
+
+        .btn-custom {
+            background-color: #007bff; /* Bootstrap primary color */
+            color: white; /* White text */
+            border: none; /* No border */
+            border-radius: 8px; /* Rounded button */
+            padding: 10px 20px; /* Padding for button */
+            transition: background-color 0.3s, transform 0.2s; /* Transition for hover effect */
+            font-size: 1rem; /* Button text size */
+        }
+
+        .btn-custom:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            transform: scale(1.05); /* Slightly larger on hover */
+        }
+
+        .result-display {
+            background-color: #f8f9fa; /* Light gray background for results */
+            padding: 15px; /* Padding inside result display */
+            margin-top: 20px; /* Spacing above result display */
+            text-align: center; /* Center the result text */
+            font-size: 1.5rem; /* Larger text size */
+            border-radius: 10px; /* Rounded corners for result */
+            border: 1px solid #eaeaea; /* Light border */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            color: #343a40; /* Dark gray text for better readability */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator-container">
+        <div class="calculator-header">
+            <h1 class="text-2xl font-bold text-gray-800">Professional Calculator</h1>
+            <p class="text-gray-600">Your reliable arithmetic companion</p>
+        </div>
+
+        <!-- Calculator Form -->
+        <form action="/calculate" method="POST">
+            <div class="mb-4">
+                <label for="num1" class="form-label">First Number:</label>
+                <input type="number" id="num1" name="num1" placeholder="Enter first number" class="form-control" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="num2" class="form-label">Second Number:</label>
+                <input type="number" id="num2" name="num2" placeholder="Enter second number" class="form-control" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="operation" class="form-label">Select Operation:</label>
+                <select name="operation" id="operation" class="form-select">
+                    <option value="add">Add (+)</option>
+                    <option value="subtract">Subtract (-)</option>
+                    <option value="multiply">Multiply (×)</option>
+                    <option value="divide">Divide (÷)</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-custom w-full">Calculate</button>
+        </form>
+
+        <!-- Result Display -->
+        <% if (result !== null) { %>
+        <div class="result-display">
+            <h2>Result: <%= result %></h2>
+        </div>
+        <% } %>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
